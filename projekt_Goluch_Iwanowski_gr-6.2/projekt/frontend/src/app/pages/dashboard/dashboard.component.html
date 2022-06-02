@@ -1,0 +1,56 @@
+<div class=" content">
+  <div class=" row">
+    <div class=" col-12">
+      <app-alert></app-alert>
+      <div class=" card card-chart">
+        <div class=" card-header">
+          <div class=" row">
+            <div class=" col-sm-6 text-left">
+              <h2 class=" card-title">Current active posts</h2>
+              <h5 class=" card-title">Total: {{posts.length}}</h5>
+            </div>
+            <div class=" col-sm-6">
+              <div class="d-flex justify-content-end card-description">
+                <div class="d-flex justify-content-end card-description">
+                  <button routerLink="/post-add" class=" btn btn-fill btn-warn" type="submit"> Create new post </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="card-body">
+          <div *ngFor="let post of posts; let i = index" class=" card card-user col-12">
+            <div>
+              <div class=" btn-group btn-group-toggle float-right" data-toggle="buttons" >
+                <button class=" btn btn-sm btn-danger btn-simple" (click)="deletePost(post.id)" *ngIf="isAdmin || post.creator?.id == currentUser?.id">
+                  <h5 class=" card-title">
+                    <i class=" tim-icons icon-support-17"> Delete</i>
+                  </h5>
+                </button>
+              </div>
+              <div class=" btn-group btn-group-toggle float-right" data-toggle="buttons">
+                <button class=" btn btn-sm btn-info btn-simple" >
+                  <h5 class=" card-title">
+                    <i routerLink="/post-show" [state]="{data:post.id}" class=" tim-icons icon-support-17"> Show</i>
+                  </h5>
+                </button>
+              </div>
+
+            </div>
+            <div class=" card-body">
+              <p class=" card-text"></p>
+              <div class=" author">
+                <div class=" block block-one"></div>
+                <div class=" block block-two"></div>
+              </div>
+              <h3 class="d-flex justify-content-center title">{{ post.title }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=" card card-chart">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class=" content" xmlns="http://www.w3.org/1999/html">
+  <div class="justify-content-center card-body row">
+    <div class=" col-10">
+      <app-alert></app-alert>
+      <div class=" card card-chart">
+        <div class=" card-header">
+          <div class=" row">
+            <div class=" col-sm-6">
+            </div>
+          </div>
+        </div>
+        <form [formGroup]="postAddForm" (ngSubmit)="addPost()">
+          <div formGroupName="newPost" class="d-flex justify-content-center card-body">
+            <div class=" card card-user col-10 ">
+              <div>
+              </div>
+              <div class=" card-body">
+                <p class=" card-text"></p>
+                <div class=" author">
+                  <div class=" block block-one"></div>
+                  <div class=" block block-two"></div>
+                </div>
+                <h2 class="d-flex justify-content-center title">New Post</h2>
+                <div class="d-flex justify-content-center row">
+                  <div class=" col-md-5 pr-md-1">
+                    <div class="form-group">
+                      <label> Title </label>
+                      <input class=" form-control" placeholder="Title" type="text" formControlName="title"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center row">
+                  <div class=" col-md-5 pr-md-1">
+                    <div class="form-group">
+                      <label> Description </label>
+                      <textarea class=" form-control" placeholder="Description" type="text" formControlName="description"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center card-footer">
+                  <button class=" btn btn-fill btn-info" type="submit">Create</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

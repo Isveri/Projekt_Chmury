@@ -1,0 +1,36 @@
+<div class=" content">
+  <div class=" row">
+    <div class=" col-12">
+      <app-alert></app-alert>
+      <div class=" card card-chart">
+        <table class="table">
+          <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th>Title</th>
+            <th class="text-center">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let entry of user?.posts; let i=index">
+            <td class="text-center">{{i+1}}</td>
+            <td>{{entry.title}}</td>
+            <td class="td-actions text-center">
+              <button class=" btn btn-sm btn-info btn-simple" >
+                <h5 class=" card-title">
+                  <i routerLink="/post-show" [state]="{data:entry.id}" class=" tim-icons icon-support-17"> Show</i>
+                </h5>
+              </button>
+              <button type="button" rel="tooltip" class="btn btn-danger btn-sm btn-simple" (click)="removePost(entry.id)">
+                <h5 class=" card-title">
+                <i class="tim-icons icon-simple-remove">Delete</i>
+                </h5>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+  db:
+    image: 'mysql'
+    environment:
+           - MYSQL_ROOT_PASSWORD=password
+           - MYSQL_DATABASE=forum
+    volumes:
+           - ./my-db:/var/lib/mysql
+    ports:
+           - 3306:3306
+    expose:
+           - 3306
+  backendserver:
+    build: ./backend/
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/forum?createDatabaseIfNotExists=true&autoReconnect=true
+    ports:
+           - "8080:8080"
+    links:
+           - "db"
+    depends_on:
+           - "db"
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    volumes:
+           - /app/node_modules
+           - ./frontend:/app
+    ports:
+           - "4200:4200"
